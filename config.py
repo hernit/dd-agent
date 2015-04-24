@@ -536,6 +536,20 @@ def get_config(parse_args=True, cfg_path=None, options=None):
     else:
         agentConfig['ssl_certificate'] = agentConfig['ca_certs']
 
+    # Getting interval parameters for periodic metrics
+    if config.has_option("Main", "metadata_interval"):
+        agentConfig["metadata_interval"] = config.get("Main", "metadata_interval")
+
+    if config.has_option("Main", "external_host_tags_interval"):
+        agentConfig["external_host_tags_interval"] = config.get("Main", 
+                                                                "external_host_tags_interval")
+
+    if config.has_option("Main", "agent_checks_interval"):
+        agentConfig["agent_checks_interval"] = config.get("Main", "agent_checks_interval")
+
+    if config.has_option("Main", "dd_check_tags_interval"):
+        agentConfig["dd_check_tags_interval"] = config.get("Main", "dd_check_tags_interval")
+
     return agentConfig
 
 

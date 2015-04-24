@@ -55,7 +55,7 @@ class Collector(object):
             },
             'external_host_tags': {
                 'start': time.time() - 3 * 60, # Wait for the checks to init
-                'interval': int(agentConfig.get('external_host_tags', 5 * 60))
+                'interval': int(agentConfig.get('external_host_tags_interval', 5 * 60))
             },
             'agent_checks': {
                 'start': time.time(),
@@ -513,8 +513,6 @@ class Collector(object):
         if self.agentConfig['create_dd_check_tags'] and \
                 self._should_send_additional_data('dd_check_tags'):
             app_tags_list = [DD_CHECK_TAG.format(c.name) for c in self.initialized_checks_d]
-            with open('/tmp/testtags.log', 'a') as lf:
-                lf.write(str(app_tags_list))
             app_tags_list.extend([DD_CHECK_TAG.format(cname) for cname in jmxfetch._get_jmx_appnames()])
             
             if 'system' not in payload['host-tags']:

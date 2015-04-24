@@ -79,6 +79,21 @@ use_mount: no
 # histogram_aggregates: max, median, avg, count
 # histogram_percentiles: 0.95
 
+# Periodic metadata intervals : select the interval at which you want different
+# metadata to be sent by the Agent (in seconds)
+
+# Generic metadata (host tags, ec2_tags, system stats...)
+# metadata_interval : 14400
+
+# External host tags
+# external_host_tags_interval : 300 
+ 
+# Agent checks
+# agent_checks_interval : 600 
+
+# Application tags (if enabled)
+# dd_check_tags_interval : 600 
+
 # ========================================================================== #
 # DogStatsd configuration                                                    #
 # ========================================================================== #
