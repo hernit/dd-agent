@@ -101,7 +101,8 @@ class ProcessTestCase(AgentCheckTest):
         'system.processes.voluntary_ctx_switches'
     ]
 
-    def mock_find_pids(self, search_string, exact_match=True, ignore_denied_access=True):
+    def mock_find_pids(self, search_string, exact_match=True, ignore_ad=True,
+                       refresh_ad_cache=True):
         idx = search_string[0].split('_')[1]
         # Use a real PID to get real metrics!
         return [os.getpid()] * self.CONFIG_STUBS[int(idx)]['mocked_processes']
